@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare two national teams using a precomputed FIFA head-to-head prediction model.">
+  <title>FIFA Team Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="predictor-card" aria-labelledby="page-title">
+      <header class="page-header">
+        <p class="eyebrow">Head-to-head model</p>
+        <h1 id="page-title">FIFA Team Predictor</h1>
+        <p class="subtitle">
+          Select two teams to view their model-based win and draw probabilities.
+        </p>
+      </header>
+
+      <form id="matchup-form" class="matchup-form">
+        <div class="team-grid">
+          <div class="field-group">
+            <label for="team-a">Team 1</label>
+            <select id="team-a" name="team-a" required>
+              <option value="">Select a team</option>
+            </select>
+          </div>
+
+          <div class="versus" aria-hidden="true">VS</div>
+
+          <div class="field-group">
+            <label for="team-b">Team 2</label>
+            <select id="team-b" name="team-b" required>
+              <option value="">Select a team</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="compare-button">Compare Teams</button>
+
+        <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
+      </form>
+
+      <section id="results-section" class="results-section" hidden aria-live="polite">
+        <h2>Predicted Outcome</h2>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <span id="team-a-label" class="result-label">Team 1 Win</span>
+            <strong id="team-a-win" class="result-value">—</strong>
+          </article>
+
+          <article class="result-card">
+            <span class="result-label">Draw</span>
+            <strong id="draw-probability" class="result-value">—</strong>
+          </article>
+
+          <article class="result-card">
+            <span id="team-b-label" class="result-label">Team 2 Win</span>
+            <strong id="team-b-win" class="result-value">—</strong>
+          </article>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Outcome</th>
+                <th>Probability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="table-team-a">Team 1 Win</td>
+                <td id="table-team-a-value">—</td>
+              </tr>
+              <tr>
+                <td>Draw</td>
+                <td id="table-draw-value">—</td>
+              </tr>
+              <tr>
+                <td id="table-team-b">Team 2 Win</td>
+                <td id="table-team-b-value">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="disclaimer">
+          Probabilities are generated from each team’s average performance and the opponent-adjusted multinomial logit model.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
